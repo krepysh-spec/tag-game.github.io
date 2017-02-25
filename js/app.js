@@ -1,3 +1,4 @@
+
 (function ($) {
 
     'use strict';
@@ -46,29 +47,36 @@
                 switch ($(this).attr('data-btn')) {
 
                         case 'menu-bnt':
-                            that.cache.timer.timer('pause');
+                            if (that.cache.gamePage.hasClass('active')) {
+                                that.cache.timer.timer('pause');
 
-                            swal({
-                                    title: "Внимание!",
-                                    text: "Вы уверены что хотите завершить игровой процесс?",
-                                    type: "warning",
-                                    showCancelButton: true,
-                                    confirmButtonColor: "#DD6B55",
-                                    confirmButtonText: "Да, выйти в меню",
-                                    cancelButtonText: "Продолжить игру",
+                                swal({
+                                        title: "Внимание!",
+                                        text: "Вы уверены что хотите завершить игровой процесс?",
+                                        type: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "Да, выйти в меню",
+                                        cancelButtonText: "Продолжить игру",
 
-                                },
-                                function(isConfirm){
-                                    if (isConfirm) {
-                                        that.pager('.game', '.menu');
-                                        that.checkSettings();
-                                        that.cache.timer.timer('remove');
-                                        that.cache.timer.fadeOut(300);
-                                    } else {
-                                        that.cache.timer.timer('resume');
-                                    }
-                                });
-
+                                    },
+                                    function(isConfirm){
+                                        if (isConfirm) {
+                                            that.pager('.game', '.menu');
+                                            that.checkSettings();
+                                            that.cache.timer.timer('remove');
+                                            that.cache.timer.fadeOut(300);
+                                        } else {
+                                            that.cache.timer.timer('resume');
+                                        }
+                                    });
+                            } else {
+                                if (that.cache.howToPlayPage.hasClass('active')){
+                                    that.pager('.how-to-play', '.menu');
+                                } else if(that.cache.recordsPage.hasClass('active')) {
+                                    that.pager('.records', '.menu');
+                                }
+                            }
 
                             break;
 
@@ -132,6 +140,13 @@
                that.timer();
             });
 
+            that.cache.records.on('click', function (e) {
+               e.preventDefault();
+
+                that.pager('.menu', '.records');
+                that.checkSettings();
+
+            });
 
             this.cache.howToPlay.on('click', function (e) {
                 e.preventDefault();
@@ -139,7 +154,7 @@
                 that.checkSettings();
             })
         },
-        
+
         menuPause: function () {
             var that = this;
 
@@ -161,7 +176,7 @@
             $(close).removeClass('active');
             $(open).addClass('active');
         },
-        
+
         timer: function () {
             this.cache.timer.fadeIn(300);
             
@@ -179,7 +194,8 @@
         },
 
         keyboardEvent: function (e) {
-            
+            var that = this;
+
             switch(e.keyCode) {
                 case 38: key('up');
                     break;
@@ -216,7 +232,20 @@
                     }
             }
 
-            this.checkWin();
+            checkWin();
+
+            function checkWin() {
+                var counter = 0,
+                    i = 1;
+
+                for(i; i <= 15; i++) {
+                    if( $('.block-'+i).hasClass( that.getXY(i) ) ) counter++;
+                }
+
+                if(counter == 15) {
+                    swal("поздравляем с победой!", "Ваш результат:" + this.cache.timer.text(), "success")
+                }
+            }
         },
 
         key: function (type) {
@@ -248,29 +277,18 @@
         getRandomInt: function (min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; },
 
         newGame: function () {
-            for(var a=1; a <= 1000; a++) {
-                switch( this.getRandomInt(1 , 4) ) {
+            for(var a = 1; a <= 1000; a++) {
+                switch( this.getRandomInt(1, 4) ) {
                     case 1: this.key('up');    break;
                     case 2: this.key('down');  break;
                     case 3: this.key('left');  break;
                     case 4: this.key('right'); break;
                 }
             }
-        },
-
-        checkWin: function () {
-            var counter = 0,
-                i = 1;
-
-            for(i; i <= 15; i++) {
-                if( $('.block-'+i).hasClass( this.getXY(i) ) ) counter++;
-            }
-
-            if(counter == 15) alert('Поздравляем! Вы победили!');
         }
-
     };
 
+    //Initialization
     Game.init();
 
 }(jQuery));
