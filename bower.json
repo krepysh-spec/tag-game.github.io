@@ -19,6 +19,7 @@
     "jquery": "^3.1.1",
     "normalize-css": "^5.0.0",
     "font-awesome": "^4.7.0",
-    "timer.jquery": "^0.6.4"
+    "timer.jquery": "^0.6.4",
+    "sweetalert": "^1.1.3"
   }
 }

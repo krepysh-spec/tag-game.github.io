@@ -46,10 +46,29 @@
                 switch ($(this).attr('data-btn')) {
 
                         case 'menu-bnt':
-                            that.pager('.game', '.menu');
-                            that.checkSettings();
-                            that.cache.timer.timer('remove');
-                            that.cache.timer.fadeOut(300);
+                            that.cache.timer.timer('pause');
+
+                            swal({
+                                    title: "Внимание!",
+                                    text: "Вы уверены что хотите завершить игровой процесс?",
+                                    type: "warning",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "Да, выйти в меню",
+                                    cancelButtonText: "Продолжить игру",
+
+                                },
+                                function(isConfirm){
+                                    if (isConfirm) {
+                                        that.pager('.game', '.menu');
+                                        that.checkSettings();
+                                        that.cache.timer.timer('remove');
+                                        that.cache.timer.fadeOut(300);
+                                    } else {
+                                        that.cache.timer.timer('resume');
+                                    }
+                                });
+
 
                             break;
 

@@ -3,6 +3,7 @@
  * |     Common                   |
  * ================================
 */
+html { overflow:  hidden; }
 
 body {
     min-width: 960px;
