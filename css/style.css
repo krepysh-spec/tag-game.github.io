@@ -1,0 +1,262 @@
+/*
+ * ================================
+ * |     Common                   |
+ * ================================
+*/
+
+body {
+    min-width: 960px;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+
+.page {
+    display: none;
+    position: absolute;
+    top: 200px;
+}
+
+.active {
+     display: block;
+}
+
+/*
+ * ================================
+ * |     Background               |
+ * ================================
+*/
+
+.canvas-wrap {
+    position: relative;
+}
+.canvas-content {
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#canvas {
+    overflow: hidden;
+}
+
+/*
+ * ================================
+ * |     Settings                 |
+ * ================================
+*/
+
+#timer {
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    color: #fff;
+    padding: 24px 15px;
+    font-size: 24px;
+}
+
+#settings {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+}
+
+#settings > ul > li {
+    display: inline-block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #4e4e4e;
+    line-height: 52px;
+    border-radius: 50%;
+    margin-left: 10px;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    margin-right: 10px;
+}
+
+#settings > ul > li:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+#settings > ul > li > a {
+    font-size: 30px;
+    color: #4e4e4e;
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 50%;
+}
+
+/*
+ * ================================
+ * |     Menu                     |
+ * ================================
+*/
+
+#wrapper > .menu {
+    width: 300px;
+    height: 200px;
+    margin:  150px auto;
+    text-align: center;
+    background: rgba(101, 230, 201, 0.4);
+    border-radius: 5px;
+    border: 1px solid rgba(47, 47, 47, 0.1);
+}
+
+.menu > h1 {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 45px;
+    margin: 0;
+}
+
+.menu > ul {
+    padding-left: 0;
+}
+
+.menu > ul > li {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.menu > ul > li > a {
+    font-size: 25px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+}
+
+.menu > ul > li > a:hover {
+    text-decoration: underline;
+}
+
+.block-info {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.block-info > p > i {
+    font-size: 125px;
+}
+
+/*
+ * ================================
+ * |     Pause                    |
+ * ================================
+*/
+
+.pause-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.68);
+    display: none;
+}
+
+.pause-block > h2 {
+    font-size: 45px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 253px;
+}
+
+.pause-block > p {
+    text-align: center;
+}
+
+.pause-block > p > i {
+    font-size: 55px;
+    color: #ffffff;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    width: 75px;
+    height: 75px;
+    line-height: 78px;
+    margin: 10px;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.pause-block > p > i:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+/*
+ * ================================
+ * |     Game                     |
+ * ================================
+*/
+
+#board {
+    display: block;
+    float: left;
+    padding: 2px;
+    border: 5px solid #fff;
+    width: 276px;
+    height: 276px;
+    position: relative;
+    margin-left: 53px;
+}
+
+#buttons {
+    display: block;
+    float: left;
+    margin: 25px 0 0 25px;
+    padding: 2px;
+}
+
+.block {
+    display: block;
+    position: absolute;
+    width: 62px;
+    height: 57px;
+    border: 2px solid #fff;
+    margin: 2px;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 5px;
+}
+
+.x1y1 { left: 0px; top: 0px;}
+.x2y1 { left: 70px; top: 0px;}
+.x3y1 { left: 140px; top: 0px;}
+.x4y1 { left: 210px; top: 0px;}
+
+.x1y2 { left: 0px; top: 70px;}
+.x2y2 { left: 70px; top: 70px;}
+.x3y2 { left: 140px; top: 70px;}
+.x4y2 { left: 210px; top: 70px;}
+
+.x1y3 { left: 0px; top: 140px;}
+.x2y3 { left: 70px; top: 140px;}
+.x3y3 { left: 140px; top: 140px;}
+.x4y3 { left: 210px; top: 140px;}
+
+.x1y4 { left: 0px; top: 210px;}
+.x2y4 { left: 70px; top: 210px;}
+.x3y4 { left: 140px; top: 210px;}
+.x4y4 { left: 210px; top: 210px;}

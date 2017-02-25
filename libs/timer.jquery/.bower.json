@@ -1,0 +1,29 @@
+{
+  "name": "timer.jquery",
+  "ignore": [
+    ".babelrc",
+    ".eslintrc.json",
+    ".gitignore",
+    ".travis.yml",
+    "Gruntfile.js",
+    "index.html",
+    "package.json",
+    "test",
+    "webpack.config.js"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9.0"
+  },
+  "homepage": "https://github.com/walmik/timer.jquery",
+  "version": "0.6.4",
+  "_release": "0.6.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.6.4",
+    "commit": "a2592d8f0374359874325f43543a25219534ce67"
+  },
+  "_source": "https://github.com/walmik/timer.jquery.git",
+  "_target": "^0.6.4",
+  "_originalSource": "timer.jquery",
+  "_direct": true
+}
