@@ -149,9 +149,10 @@ a:hover {
     text-align: center;
 }
 
-.block-info > p > i {
+.block-info > p > i, .records > p > i {
     font-size: 125px;
 }
+
 
 /*
  * ================================
