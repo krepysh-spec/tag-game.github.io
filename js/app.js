@@ -232,10 +232,12 @@
             for(i; i <= 15; i++) {
                 if( $('.block-'+i).hasClass( this.getXY(i) ) ) counter++;
             }
-
-            if(counter == 15) {
-                swal("поздравляем с победой!", "Ваш результат:" + this.cache.timer.text(), "success")
+            if (this.cache.gamePage.hasClass('active')) {
+                if(counter == 15) {
+                    swal("Поздравляем с победой!", "Ваш результат: " + this.cache.timer.text(), "success")
+                }
             }
+
         },
 
         key: function (type) {
