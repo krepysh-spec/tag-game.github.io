@@ -205,57 +205,36 @@
         },
 
         keyboardEvent: function (e) {
-            var that = this;
 
             switch(e.keyCode) {
-                case 38: key('up');
+                case 38:
+                    Game.key('up');
                     break;
-                case 40: key('down');
+                case 40:
+                    Game.key('down');
                     break;
-                case 37: key('left');
+                case 37:
+                    Game.key('left');
                     break;
-                case 39: key('right');
+                case 39:
+                    Game.key('right');
                     break;
             }
 
-            function key(type) {
-                for(var a = 1; a <= 4; a++)
-                    for(var b = 1; b <= 3; b++) {
-                        switch( type ) {
-                            case 'up':
-                                var from = 'x'+a+'y'+(b+1);
-                                var to   = 'x'+a+'y'+b;
-                                break;
-                            case 'down':
-                                var from = 'x'+a+'y'+(4-b);
-                                var to   = 'x'+a+'y'+(5-b);
-                                break;
-                            case 'left':
-                                var from = 'x'+(b+1)+'y'+a;
-                                var to   = 'x'+b+'y'+a;
-                                break;
-                            case 'right':
-                                var from = 'x'+(4-b)+'y'+a;
-                                var to   = 'x'+(5-b)+'y'+a;
-                                break;
-                        }
-                        if( !$('.'+to).length ) {$('.'+from).removeClass(from).addClass(to);return}
-                    }
+            Game.checkWin();
+
+        },
+
+        checkWin: function () {
+            var counter = 0,
+                i = 1;
+
+            for(i; i <= 15; i++) {
+                if( $('.block-'+i).hasClass( this.getXY(i) ) ) counter++;
             }
 
-            checkWin();
-
-            function checkWin() {
-                var counter = 0,
-                    i = 1;
-
-                for(i; i <= 15; i++) {
-                    if( $('.block-'+i).hasClass( that.getXY(i) ) ) counter++;
-                }
-
-                if(counter == 15) {
-                    swal("поздравляем с победой!", "Ваш результат:" + this.cache.timer.text(), "success")
-                }
+            if(counter == 15) {
+                swal("поздравляем с победой!", "Ваш результат:" + this.cache.timer.text(), "success")
             }
         },
 
