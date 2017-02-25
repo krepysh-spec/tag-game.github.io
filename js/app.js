@@ -73,8 +73,10 @@
                             } else {
                                 if (that.cache.howToPlayPage.hasClass('active')){
                                     that.pager('.how-to-play', '.menu');
+                                    that.checkSettings();
                                 } else if(that.cache.recordsPage.hasClass('active')) {
                                     that.pager('.records', '.menu');
+                                    that.checkSettings();
                                 }
                             }
 
@@ -121,10 +123,19 @@
                         $(this.cache.settingsBtn[i]).parent().css('display', 'none');
                     }
                 }
+            } else if(this.cache.recordsPage.hasClass('active') || this.cache.howToPlayPage.hasClass('active')) {
+                for (var b = 0; b < this.cache.settingsBtn.length; b++) {
+                    if($(this.cache.settingsBtn[b]).attr('data-btn') == 'pause-btn') {
+                        $(this.cache.settingsBtn[b]).parent().css('display', 'none');
+                    } else if ($(this.cache.settingsBtn[b]).attr('data-btn') == 'menu-bnt') {
+                        $(this.cache.settingsBtn[b]).parent().css('display', 'block');
+                    }
+                }
             } else {
                 for (var a = 0; a < this.cache.settingsBtn.length; a++) {
                     $(this.cache.settingsBtn[a]).parent().css('display', 'block');
                 }
+
             }
         },
 
